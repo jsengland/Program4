@@ -1,5 +1,4 @@
-# Program4 README
-# Jason England, 4/19/20
+# Program4 README -> Jason England, 4/19/20
 
 ## 1. Program status (what works, what doesn't)
 The only error that I had was getting the weight to actually matter when getting Pim's Min Spanning Tree.
