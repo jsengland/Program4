@@ -6,7 +6,6 @@ Currently it acts as though all edges have no weight. I kept getting confused an
 
 
 ## 2. Do you have quality code? 
-/* See our coding guidelines, Javadoc, chunks, etc */
 I do have spacing between my code and I do have JavaDocs and comments.
 
 
