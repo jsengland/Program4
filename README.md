@@ -24,4 +24,5 @@ It also allows the user to type what file they want to test and what starting ve
 
 ## 5. Other notes
 The major problem I had was getting the weights to actually matter in the doPrims method. I tried fro a while and eventually
-I just got to tired to continue working on the problem. Hopefully we can try to solve it together.
+I just got to sick and tired to continue working on the problem. Hopefully we can try to solve it together.
+I believe the problem might just be an error in location for one line of code.
