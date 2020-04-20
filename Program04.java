@@ -1,10 +1,7 @@
 package sample;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * The main() class for Program04, CSC 210 Spring 2020.
@@ -53,24 +50,52 @@ public class Program04 {
         double[] weightList = new double[g.numVerts()];
         PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
         Graph210 graph = new MyGraph();
-        //ArrayList<MyEdge> temp = new ArrayList<MyEdge>();
+        ArrayList<Integer> reached = new ArrayList<Integer>();
+        ArrayList<Integer> unreached = new ArrayList<Integer>();
+        double record = 100000.0;
+
+
+        //puts all verticies into unreached ArrayList.
+        for(Edge210 f: g.allEdges()) {
+            if (!unreached.contains(f.getVert1())) {
+                unreached.add(f.getVert1());
+            }
+            if(!unreached.contains(f.getVert2())){
+                unreached.add(f.getVert2());
+            }
+        }
+
+        System.out.println(unreached); //debug
+
 
         pq.add(startVert);
         while(!pq.isEmpty()) {
             int curV = pq.poll();
             visitList[curV] = true;
 
-            ArrayList<Edge210> edgeList = (ArrayList<Edge210>) g.edges(curV);
+            ArrayList<Edge210> edgeList = (ArrayList<Edge210>)g.edges(curV);
             for (Edge210 e : edgeList) {
-                if (visitList[e.otherVert(curV)] == false) {
+                if(e.getWeight() < record){
+                    Integer m;
+                    unreached.remove(m = curV);
+
+                    if(!reached.contains(curV)) {
+                        reached.add(curV);
+                        //graph.addEdge(curV, e.otherVert(curV), e.getWeight());
+                    }
+                    record = e.getWeight();
+                }
+
+                if (!visitList[e.otherVert(curV)]) {
                     graph.addEdge(curV, e.otherVert(curV), e.getWeight());
-                    //temp.add(new MyEdge(curV, e.otherVert(curV), e.getWeight()));
                     pq.add(e.otherVert(curV));
                     visitList[e.otherVert(curV)] = true;
                 }
 
             }
         }
+        System.out.println(unreached); //debug
+        System.out.println(reached); //debug
         return graph;
     }
 
